@@ -33,8 +33,8 @@
 
             getBtn.addEventListener('click', () => {
                 resultDiv.innerHTML = '<p class="text-gray-500">Getting a recommendation...</p>';
-                // Fetch recommendation from the backend API using its Kubernetes service name and new port.
-                fetch('http://recommendations-backend-svc:5000/api/recommendation')
+                // Fetch recommendation from the relative API path. Nginx will proxy this request.
+                fetch('/api/recommendation')
                     .then(response => response.json())
                     .then(book => {
                         resultDiv.innerHTML = `
